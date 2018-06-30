@@ -1,0 +1,27 @@
+{
+  "name": "mouse-movement",
+  "version": "0.0.1",
+  "description": "Mouse movement info",
+  "main": "dist/MouseMovement.js",
+  "keywords": [
+    "mouse",
+    "movement",
+    "direction",
+    "speed",
+    "velocity",
+    "mouse movement",
+    "mouse direction",
+    "mouse speed",
+    "mouse velocity"
+  ],
+  "author": "Philip Hussak",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  },
+  "scripts": {
+    "build": "babel ./src --out-dir ./dist"
+  }
+}
