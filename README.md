@@ -1,9 +1,7 @@
 # MouseMovement.js
 
-
-![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square) 
-[![npm (custom registry)](https://img.shields.io/npm/v/npm.svg?registry_uri=https%3A%2F%2Fregistry.npmjs.com&style=flat-square)](https://www.npmjs.com/package/mouse-speed)
-
+[![npm (custom registry)](https://img.shields.io/npm/v/npm.svg?registry_uri=https%3A%2F%2Fregistry.npmjs.com/mouse-movement&style=flat-square)](https://www.npmjs.com/package/mouse-speed) 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/wiseoldman/mouse-movement/blob/master/LICENSE) 
 Get the mouse movement direction and speed (using requestAnimationFrame)
 
 ## Installation
