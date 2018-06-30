@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "description": "Mouse movement info",
   "main": "dist/MouseMovement.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiseoldman/mouse-movement.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wiseoldman/mouse-movement/issues"
+  },
+  "homepage": "https://github.com/wiseoldman/mouse-movement#readme",
   "keywords": [
     "mouse",
     "movement",
