@@ -1,5 +1,4 @@
 node_modules/
-.npmignore
 package-lock.json
 
 # Created by https://www.gitignore.io/api/code,linux,macos,windows,visualstudiocode
