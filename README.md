@@ -27,7 +27,7 @@ let mouseMovementCallback = function () {
 }
 ```
 
-Listen for mouse movement on or more elements
+Listen for mouse movement on one or more elements
 
 ```
 import MouseMovement from './js/MouseMovement';
