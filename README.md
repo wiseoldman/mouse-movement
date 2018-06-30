@@ -4,8 +4,8 @@ Get the mouse movement direction and speed (using requestAnimationFrame)
 
 ## Installation
 
-```bash
-npm install mouse-movement
+```shell
+$ npm install mouse-movement
 ```
 
 ## Usage
