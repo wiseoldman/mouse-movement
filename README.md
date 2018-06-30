@@ -49,9 +49,6 @@ let mouseMovementCallback = function () {
 Remove all listeners associated with the class
 
 ```js
-const mouseMovement = new MouseMovement('.element');
-mouseMovement.init({callbackFn: mouseMovementCallback});
-
 mouseMovement.destroy();
 ```
 
