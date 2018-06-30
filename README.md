@@ -4,7 +4,7 @@ Get the mouse movement direction and speed (using requestAnimationFrame)
 
 ## Installation
 
-```
+```bash
 npm install mouse-movement
 ```
 
@@ -12,7 +12,7 @@ npm install mouse-movement
 
 Listen for mouse movement on the window
 
-```
+```js
 import MouseMovement from './js/MouseMovement';
 
 const mouseMovement = new MouseMovement();
@@ -29,7 +29,7 @@ let mouseMovementCallback = function () {
 
 Listen for mouse movement on one or more elements
 
-```
+```js
 import MouseMovement from './js/MouseMovement';
 
 const mouseMovement = new MouseMovement('.element');
