@@ -1,5 +1,8 @@
 # MouseMovement.js
 
+
+![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)
+
 Get the mouse movement direction and speed (using requestAnimationFrame)
 
 ## Installation
