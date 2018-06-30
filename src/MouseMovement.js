@@ -1,4 +1,4 @@
-export default class MouseMovement {
+module.exports = class MouseMovement {
   constructor (selector = window) {
     this.callbackFn;
     this.diagonalThreshold;
