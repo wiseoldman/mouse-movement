@@ -13,7 +13,7 @@ $ npm install mouse-movement
 Listen for mouse movement on the window
 
 ```js
-import MouseMovement from './js/MouseMovement';
+import MouseMovement from 'MouseMovement';
 
 const mouseMovement = new MouseMovement();
 mouseMovement.init({callbackFn: mouseMovementCallback});
@@ -30,7 +30,7 @@ let mouseMovementCallback = function () {
 Listen for mouse movement on one or more elements
 
 ```js
-import MouseMovement from './js/MouseMovement';
+import MouseMovement from 'MouseMovement';
 
 const mouseMovement = new MouseMovement('.element');
 mouseMovement.init({callbackFn: mouseMovementCallback});
