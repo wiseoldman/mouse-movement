@@ -1,6 +1,6 @@
 {
   "name": "mouse-movement",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Mouse movement info",
   "main": "dist/MouseMovement.js",
   "repository": {
