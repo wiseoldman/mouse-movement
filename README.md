@@ -1,6 +1,6 @@
 # MouseMovement.js
 
-[![GitHub issues](https://img.shields.io/github/issues/wiseoldman/mouse-movement.svg?style=flat-square)](https://github.com/wiseoldman/mouse-movement/issues) ![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square) [![GitHub license](https://img.shields.io/github/license/wiseoldman/mouse-movement.svg?style=flat-square)](https://github.com/wiseoldman/mouse-movement/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/wiseoldman/mouse-movement.svg?style=flat-square)](https://github.com/wiseoldman/mouse-movement/issues) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/mouse-movement) [![GitHub license](https://img.shields.io/github/license/wiseoldman/mouse-movement.svg?style=flat-square)](https://github.com/wiseoldman/mouse-movement/blob/master/LICENSE)
 
 Get the mouse movement direction and speed (using requestAnimationFrame)
 
