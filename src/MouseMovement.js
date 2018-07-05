@@ -1,6 +1,7 @@
 module.exports = class MouseMovement {
   constructor (selector = window) {
-    this.callbackFn;
+    this.mousemoveCallback;
+    this.mouseoutCallback;
     this.diagonalThreshold;
     this.element;
 
@@ -16,16 +17,17 @@ module.exports = class MouseMovement {
     this.ticking = false;
     this.windowOrDocument = false;
 
-    this.resetSkipCalculation = this.resetSkipCalculation.bind(this);
+    this.mouseLeave = this.mouseLeave.bind(this);
     this.fetchCoordinates = this.fetchCoordinates.bind(this);
   }
 
-  init ({callbackFn = () => {console.error('No callback function')}, diagonalThreshold = 4} = {}) {
+  init ({mousemoveCallback = () => {console.error('No callback function')}, mouseoutCallback = () => {}, diagonalThreshold = 4} = {}) {
     const SELECTOR_IS_WINDOW = this.selector === window || this.selector === 'window';
     const SELECTOR_IS_DOCUMENT = this.selector === document || this.selector === 'document';
     this.windowOrDocument = SELECTOR_IS_WINDOW || SELECTOR_IS_DOCUMENT;
 
-    this.callbackFn = callbackFn;
+    this.mousemoveCallback = mousemoveCallback;
+    this.mouseoutCallback = mouseoutCallback;
     this.diagonalThreshold = diagonalThreshold;
 
     if (SELECTOR_IS_WINDOW) {
@@ -38,11 +40,11 @@ module.exports = class MouseMovement {
 
     if (this.windowOrDocument) {
       this.element.addEventListener('mousemove', this.fetchCoordinates);
-      this.element.addEventListener('mouseleave', this.resetSkipCalculation);
+      this.element.addEventListener('mouseleave', this.mouseLeave);
     } else {
       for (let i = 0; i < this.element.length; i++) {
         this.element[i].addEventListener('mousemove', this.fetchCoordinates);
-        this.element[i].addEventListener('mouseleave', this.resetSkipCalculation);
+        this.element[i].addEventListener('mouseleave', this.mouseLeave);
       }
     }
   }
@@ -73,22 +75,26 @@ module.exports = class MouseMovement {
       this.diagonal = this.speedX > this.diagonalThreshold && this.speedY > this.diagonalThreshold;
       this.oldX = mouseX;
       this.oldY = mouseY;
-      this.callbackFn();
+      this.mousemoveCallback();
     }
   }
 
-  resetSkipCalculation() {
+  mouseLeave() {
     this.skipCalculation = true;
+
+    if (typeof this.mouseoutCallback === 'function') {
+      this.mouseoutCallback();
+    }
   }
 
   destroy() {
     if (this.windowOrDocument) {
       this.element.removeEventListener('mousemove', this.fetchCoordinates);
-      this.element.removeEventListener('mouseleave', this.resetSkipCalculation);
+      this.element.removeEventListener('mouseleave', this.mouseLeave);
     } else {
       for (let i = 0; i < this.element.length; i++) {
         this.element[i].removeEventListener('mousemove', this.fetchCoordinates);
-        this.element[i].removeEventListener('mouseleave', this.resetSkipCalculation);
+        this.element[i].removeEventListener('mouseleave', this.mouseLeave);
       }
     }
   }

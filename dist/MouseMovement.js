@@ -10,7 +10,8 @@ module.exports = function () {
 
     _classCallCheck(this, MouseMovement);
 
-    this.callbackFn;
+    this.mousemoveCallback;
+    this.mouseoutCallback;
     this.diagonalThreshold;
     this.element;
 
@@ -26,6 +27,7 @@ module.exports = function () {
     this.ticking = false;
     this.windowOrDocument = false;
 
+    this.mouseLeave = this.mouseLeave.bind(this);
     this.resetSkipCalculation = this.resetSkipCalculation.bind(this);
     this.fetchCoordinates = this.fetchCoordinates.bind(this);
   }
@@ -34,10 +36,12 @@ module.exports = function () {
     key: 'init',
     value: function init() {
       var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-          _ref$callbackFn = _ref.callbackFn,
-          callbackFn = _ref$callbackFn === undefined ? function () {
+          _ref$mousemoveCallbac = _ref.mousemoveCallback,
+          mousemoveCallback = _ref$mousemoveCallbac === undefined ? function () {
         console.error('No callback function');
-      } : _ref$callbackFn,
+      } : _ref$mousemoveCallbac,
+          _ref$mouseoutCallback = _ref.mouseoutCallback,
+          mouseoutCallback = _ref$mouseoutCallback === undefined ? function () {} : _ref$mouseoutCallback,
           _ref$diagonalThreshol = _ref.diagonalThreshold,
           diagonalThreshold = _ref$diagonalThreshol === undefined ? 4 : _ref$diagonalThreshol;
 
@@ -45,7 +49,8 @@ module.exports = function () {
       var SELECTOR_IS_DOCUMENT = this.selector === document || this.selector === 'document';
       this.windowOrDocument = SELECTOR_IS_WINDOW || SELECTOR_IS_DOCUMENT;
 
-      this.callbackFn = callbackFn;
+      this.mousemoveCallback = mousemoveCallback;
+      this.mouseoutCallback = mouseoutCallback;
       this.diagonalThreshold = diagonalThreshold;
 
       if (SELECTOR_IS_WINDOW) {
@@ -58,11 +63,11 @@ module.exports = function () {
 
       if (this.windowOrDocument) {
         this.element.addEventListener('mousemove', this.fetchCoordinates);
-        this.element.addEventListener('mouseleave', this.resetSkipCalculation);
+        this.element.addEventListener('mouseleave', this.mouseLeave);
       } else {
         for (var i = 0; i < this.element.length; i++) {
           this.element[i].addEventListener('mousemove', this.fetchCoordinates);
-          this.element[i].addEventListener('mouseleave', this.resetSkipCalculation);
+          this.element[i].addEventListener('mouseleave', this.mouseLeave);
         }
       }
     }
@@ -97,7 +102,7 @@ module.exports = function () {
         this.diagonal = this.speedX > this.diagonalThreshold && this.speedY > this.diagonalThreshold;
         this.oldX = mouseX;
         this.oldY = mouseY;
-        this.callbackFn();
+        this.mousemoveCallback();
       }
     }
   }, {
@@ -106,15 +111,24 @@ module.exports = function () {
       this.skipCalculation = true;
     }
   }, {
+    key: 'mouseLeave',
+    value: function mouseLeave() {
+      this.skipCalculation = true;
+
+      if (typeof this.mouseoutCallback === 'function') {
+        this.mouseoutCallback();
+      }
+    }
+  }, {
     key: 'destroy',
     value: function destroy() {
       if (this.windowOrDocument) {
         this.element.removeEventListener('mousemove', this.fetchCoordinates);
-        this.element.removeEventListener('mouseleave', this.resetSkipCalculation);
+        this.element.removeEventListener('mouseleave', this.mouseLeave);
       } else {
         for (var i = 0; i < this.element.length; i++) {
           this.element[i].removeEventListener('mousemove', this.fetchCoordinates);
-          this.element[i].removeEventListener('mouseleave', this.resetSkipCalculation);
+          this.element[i].removeEventListener('mouseleave', this.mouseLeave);
         }
       }
     }
