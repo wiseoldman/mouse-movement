@@ -18,7 +18,7 @@ Listen for mouse movement on the window
 import MouseMovement from 'MouseMovement';
 
 const mouseMovement = new MouseMovement();
-mouseMovement.init({callbackFn: mouseMovementCallback});
+mouseMovement.init({mousemoveCallback: mouseMovementCallback});
 
 let mouseMovementCallback = function () {
     console.log(mouseMovement.directionX);
@@ -35,7 +35,7 @@ Listen for mouse movement on one or more elements
 import MouseMovement from 'MouseMovement';
 
 const mouseMovement = new MouseMovement('.element');
-mouseMovement.init({callbackFn: mouseMovementCallback});
+mouseMovement.init({mousemoveCallback: mouseMovementCallback});
 
 let mouseMovementCallback = function () {
     console.log(mouseMovement.directionX);
