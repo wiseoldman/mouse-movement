@@ -28,7 +28,6 @@ module.exports = function () {
     this.windowOrDocument = false;
 
     this.mouseLeave = this.mouseLeave.bind(this);
-    this.resetSkipCalculation = this.resetSkipCalculation.bind(this);
     this.fetchCoordinates = this.fetchCoordinates.bind(this);
   }
 
@@ -104,11 +103,6 @@ module.exports = function () {
         this.oldY = mouseY;
         this.mousemoveCallback();
       }
-    }
-  }, {
-    key: 'resetSkipCalculation',
-    value: function resetSkipCalculation() {
-      this.skipCalculation = true;
     }
   }, {
     key: 'mouseLeave',
